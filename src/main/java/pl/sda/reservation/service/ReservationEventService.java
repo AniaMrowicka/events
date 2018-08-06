@@ -7,6 +7,7 @@ import pl.sda.reservation.respository.ReservationEventRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservationEventService {
@@ -20,9 +21,15 @@ public class ReservationEventService {
     public void saveReservation (ReservationEvent reservationEvent){
          reservationEventRepository.save(reservationEvent);
     }
-    public List<ReservationEvent> listsEvents(){
-        return reservationEventRepository.findAll();
+
+    public List<ReservationEvent> getAllEvents() {
+        return reservationEventRepository.findAll();}
+
+    public void removeEvent(Long id) {
+        reservationEventRepository.deleteById(id);
     }
 
-
+    public Optional<ReservationEvent> find(Long id) {
+        return reservationEventRepository.findById(id);
+    }
 }

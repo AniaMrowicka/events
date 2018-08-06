@@ -26,6 +26,8 @@ public class ReservationEvent {
     private int reservationsLimit;
     private String description;
 
-//    @OneToMany
-//    private List<Reservation> reservationList;
+    @OneToMany(mappedBy = "event") // jeden event ma wiele rezerwacji
+    private List<Reservation> reservations;
+
+
 }

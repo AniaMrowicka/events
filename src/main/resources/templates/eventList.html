@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: links">
+
+</head>
+<body>
+
+<div th:replace="fragments :: header"></div>
+
+<div class="container marketing">
+
+    <h3>Event List</h3>
+    <div class="row col-md-offset-1 col-md-10">
+        <div class="row table-header">
+            <div class="col-md-1">Id</div>
+            <div class="col-md-2">Name</div>
+            <div class="col-md-2">Date</div>
+            <div class="col-md-3">Reservations Limit</div>
+            <div class="col-md-2">Description</div>
+            <div class="col-md-2">Actions</div>
+        </div>
+        <div class="row table-row" th:each="event : ${eventList}">
+            <div class="col-md-1"><p th:text="${event.getId()}"></p></div>
+            <div class="col-md-2"><p th:text="${event.getEventName()}"></p></div>
+            <div class="col-md-2"><p th:text="${event.getEventDate()}"></p></div>
+            <div class="col-md-3"><p th:text="${event.getReservationsLimit()}"></p></div>
+            <div class="col-md-2"><p th:text="${event.getDescription()}"></p></div>
+            <div class="col-md-2 row">
+            <div class="col-md-6"><!--usuwanie-->
+                <a th:href="@{'/remove/' + ${event.getId()}}">Remove</a>
+            </div>
+            <div class="col-md-6"><!--szczegoly-->
+                <a th:href="@{'/details/' + ${event.getId()}}">Details</a>
+            </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>
