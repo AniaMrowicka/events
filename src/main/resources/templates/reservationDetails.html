@@ -11,23 +11,24 @@
 <h3>Reservation details</h3>
 <div class="row">
     <div class="row">
-        <form th:action="@{/reservstion/save}" th:object="${reservations}" method="post">
+        <form th:action="@{/reservation/details}" th:object="${reservationdto}" method="post">
             <input th:value="*{id}" th:field="*{id}" hidden>
-            <input th:value="*{event}" th:field="*{event}" hidden>
+            <input th:value="*{eventId}" th:field="*{eventId}" hidden>
             <div class="row">
                 <div class="col-md-3">
                     <label for="participantName">Participant name:</label>
                 </div>
                 <div class="col-md-9">
-                    <input class="form-control" id="participantName" th:value="*{name}" th:field="*{name}"></label>
+                    <input class="form-control" type="text" id="participantName" th:value="*{participantName}" th:field="*{participantName}"></label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label for="status">Status:</label>
+                    <label for="confirmed">Status:</label>
                 </div>
-                <div class="col-md-9">
-                    <input class="form-control"id="status" type="text" th:value="*{status}" th:field="*{status}"></label>
+                <div class="col-md-5">
+                        <input type="radio" name="status" id="confirmed" th:value="CONFIRMED" th:field="*{status}">CONFIRMED<br>
+                        <input type="radio" name="status" id="unconfirmed" th:value="UNCONFIRMED" th:field="*{status}">UNCONFIRMED<br>
                 </div>
             </div>
             <div class="row">

@@ -2,6 +2,7 @@ package pl.sda.reservation.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.sda.reservation.model.CreateReservationDTO;
 import pl.sda.reservation.model.Reservation;
 import pl.sda.reservation.model.ReservationEvent;
@@ -20,17 +21,18 @@ public class ReservationService {
     @Autowired
     private ReservationEventService reservationEventService;
 
-    public void saveReservation(Reservation reservation){
-        reservationRepository.save(reservation);
+    public Reservation saveReservation(Reservation reservation){
+       return reservationRepository.save(reservation);
     }
-    public void addReservation(CreateReservationDTO createReservationDTO){
+    public Reservation addReservation(CreateReservationDTO createReservationDTO){
         Optional<ReservationEvent>event=reservationEventService.find(createReservationDTO.getEventId());
 
         if (event.isPresent()){
             ReservationEvent event1= event.get();
             Reservation reservation=new Reservation(null, createReservationDTO.getParticipantName(), event1, ReservationStatus.UNCONFIRMED);
-            saveReservation(reservation);
+           return saveReservation(reservation);
         }
+        return null;
     }
 
     public List<Reservation> getReservations() {
