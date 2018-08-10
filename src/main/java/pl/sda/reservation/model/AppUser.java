@@ -24,7 +24,7 @@ public class AppUser {
     @OneToMany
     private List<Reservation> reservations;
 
-    public AppUser(String userNme, String password) {
+    public AppUser(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
