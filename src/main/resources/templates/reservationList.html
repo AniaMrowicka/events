@@ -18,18 +18,18 @@
             <div class="col-md-3">Status</div>
             <div class="col-md-4">Actions</div>
         </div>
-        <div class="row table-row" th:each="reservationList : ${reservationList}">
-            <div class="col-md-1"><p th:text="${reservationList.getId()}"></p></div>
-            <div class="col-md-2"><p th:text="${reservationList.getName()}"></p></div>
-            <div class="col-md-2"><p th:text="${reservationList.getEvent().getEventName()}"></p></div>
-            <div class="col-md-3"><p th:text="${reservationList.getStatus()}"></p></div>
+        <div class="row table-row" th:each="reservationListx : ${reservationList}">
+            <div class="col-md-1"><p th:text="${reservationListx.getId()}"></p></div>
+            <div class="col-md-2"><p th:text="${reservationListx.getName()}"></p></div>
+            <div class="col-md-2"><p th:text="${reservationListx.getEvent().getEventName()}"></p></div>
+            <div class="col-md-3"><p th:text="${reservationListx.getStatus()}"></p></div>
 
             <div class="col-md-2 row">
             <div class="col-md-6"><!--usuwanie-->
-                <a th:href="@{'/reservation/remove/' + ${reservationList.getId()}}">Remove</a>
+                <a th:href="@{'/reservation/remove/' + ${reservationListx.getId()}}">Remove</a>
             </div>
             <div class="col-md-6"><!--szczegoly-->
-                <a th:href="@{'/reservation/details/' + ${reservationList.getId()}}">Details</a>
+                <a th:href="@{'/reservation/details/' + ${reservationListx.getId()}}">Details</a>
             </div>
             </div>
         </div>
