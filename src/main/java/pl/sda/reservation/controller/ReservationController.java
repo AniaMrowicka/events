@@ -44,7 +44,7 @@ public class ReservationController {
             System.out.println(reservationService.addReservation(reservation));
             return "redirect:/reservation/list";
         } else {
-            redirect.addFlashAttribute("warningAttr", "No more tickets available");
+            redirect.addFlashAttribute("error_message", "No more tickets available");
             return "redirect:/reservation/list";
         }
     }

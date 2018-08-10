@@ -25,17 +25,21 @@
             <div class="col-md-3"><p th:text="${reservationListx.getStatus()}"></p></div>
 
             <div class="col-md-2 row">
-            <div class="col-md-6"><!--usuwanie-->
-                <a th:href="@{'/reservation/remove/' + ${reservationListx.getId()}}">Remove</a>
+                <div class="col-md-6"><!--usuwanie-->
+                    <a th:href="@{'/reservation/remove/' + ${reservationListx.getId()}}">Remove</a>
+                </div>
+                <div class="col-md-6"><!--szczegoly-->
+                    <a th:href="@{'/reservation/details/' + ${reservationListx.getId()}}">Details</a>
+                </div>
             </div>
-            <div class="col-md-6"><!--szczegoly-->
-                <a th:href="@{'/reservation/details/' + ${reservationListx.getId()}}">Details</a>
-            </div>
+        </div>
+        <div th:if="${error_message} != null" class="row">
+            <div class="col-md-offset col-md-12">
+                <p class="alert alert-danger" th:text="${error_message}" th:align="center"></p>
             </div>
         </div>
     </div>
 
-</div>
-<div th:replace="fragments :: footer"></div>
+    <div th:replace="fragments :: footer"></div>
 </body>
 </html>

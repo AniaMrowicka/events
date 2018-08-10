@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: links"/>
+</head>
+<body>
+<div th:replace="fragments :: header"/>
+<div class="container marketing">
+    <div class="row">
+    <form th:action="@{/login}" method="post">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="userName">User name:</label>
+            </div>
+            <div class="col-md-9">
+                <input class="form-control" id="userName" name="userName"></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="password">Password:</label>
+            </div>
+            <div class="col-md-9">
+                <input class="form-control" id="password" type="password" name="userName"></label>
+            </div>
+        </div>
+
+        <div th:if="${error_message} != null" class="row">
+            <div class="col-md-offset col-md-12">
+                <p class="alert alert-danger" th:text="${error_message}" th:align="center"></p>
+        </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5">
+                <input class="form-control" type="submit" th:value="Login">
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+
+</body>
+</html>
